@@ -1,0 +1,6 @@
+alias nv="nvim"
+alias gfspd="gf && gswd && git pull"
+alias gssw="git stash --include-untracked && git switch"
+alias carn="cargo new"
+alias carr="cargo run"
+alias carb="cargo build"
