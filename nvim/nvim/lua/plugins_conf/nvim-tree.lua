@@ -5,13 +5,12 @@ require'nvim-tree'.setup {
   hijack_netrw        = true,
   open_on_setup       = false,
   ignore_ft_on_setup  = {},
-  auto_close          = false,
   open_on_tab         = false,
   hijack_cursor       = false,
   update_cwd          = false,
   update_to_buf_dir   = {
     enable = true,
-    auto_open = true,
+    auto_open = false,
   },
   diagnostics = {
     enable = false,
@@ -25,7 +24,7 @@ require'nvim-tree'.setup {
   update_focused_file = {
     enable      = false,
     update_cwd  = false,
-    ignore_list = {}
+    ignore_list = { "node_modules"}
   },
   system_open = {
     cmd  = nil,
@@ -33,8 +32,8 @@ require'nvim-tree'.setup {
   },
   filters = {
     dotfiles = false,
-    custom = {}
-    exclude = { ".env", ".env.local", ".env.production", ".env.staging" }
+    custom = {},
+    exclude = { ".env", ".env.local", ".env.production", ".env.staging" },
   },
   git = {
     enable = true,
@@ -42,11 +41,9 @@ require'nvim-tree'.setup {
     timeout = 500,
   },
   view = {
-    width = 40,
-    height = 30,
     hide_root_folder = false,
     side = 'left',
-    auto_resize = false,
+    auto_resize = true,
     mappings = {
       custom_only = false,
       list = {}
@@ -57,7 +54,7 @@ require'nvim-tree'.setup {
   },
   renderer = {
     indent_markers = {
-      enable = false,
+      enable = true,
       icons = {
         corner = "└ ",
         edge = "│ ",

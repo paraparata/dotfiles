@@ -1,0 +1,11 @@
+require("plugins")
+require("configs")
+require("keymaps")
+
+require("plugins_conf/lsp")
+require("plugins_conf/treesitter")
+require("plugins_conf/comments")
+require("plugins_conf/nvim-tree")
+require("plugins_conf/telescope")
+require("plugins_conf/lualine")
+require("plugins_conf/diffview")
