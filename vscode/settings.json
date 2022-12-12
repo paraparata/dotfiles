@@ -1,0 +1,115 @@
+{
+  "workbench.layoutControl.enabled": true,
+    "workbench.activityBar.visible": false,
+    "workbench.colorCustomizations": {
+      "[Tokyo Night]": {
+       "editorLineNumber.activeForeground": "#9ece6a",
+       "editorLineNumber.foreground": "#565f89",
+       "commandCenter.background": "#e0b06818",
+       "commandCenter.activeBackground": "#38312a",
+       "commandCenter.border": "#e0b06818",
+       "quickInputList.focusBackground": "#38312a",
+       "quickInput.background": "#101118",
+       "pickerGroup.border": "#e0af68",
+       "editorStickyScroll.background": "#292424",
+       "editorPane.background": "#000",
+
+       "foreground": "#959cbd",
+       "panelTitle.activeBorder": "#3d59a1",
+       "panelTitle.activeForeground": "#bdc7f0",
+       "panelTitle.inactiveForeground": "#959cbd",
+       "titleBar.border": "#16161D",
+       "tab.activeForeground": "#bdc7f0",
+       "tab.activeBorder": "#bb9af7",
+       "tab.border": "#16161D",
+       "icon.foreground": "#b58f8f",
+       "breadcrumb.focusForeground": "#f0bdbd",
+       "breadcrumb.activeSelectionForeground": "#f0bdbd",
+       "statusBar.foreground": "#bdc7f0",
+       "list.focusForeground": "#bdc7f0",
+       "list.hoverForeground": "#bdc7f0",
+       "list.activeSelectionForeground": "#bdc7f0",
+       "list.inactiveSelectionForeground": "#bdc7f0",
+       "list.inactiveSelectionBackground": "#202330",
+       "sideBar.foreground": "#959cbd",
+       "dropdown.foreground": "#959cbd",
+       "menu.foreground":"#bdc7f0",
+       "menubar.selectionForeground":"#bdc7f0",
+       "input.foreground": "#959cbd",
+       "input.placeholderForeground": "#959cbd",
+       "gitDecoration.ignoredResourceForeground": "#696d87",
+      },
+    },
+    "editor.tokenColorCustomizations": {
+      "[Tokyo Night]": { // or "[Tokyo Night Storm]"
+          "comments": "#59628b",
+          "textMateRules": [
+            {
+              "scope":"comment.block",
+              "settings": {
+                "foreground": "#59628b",
+              }
+            },
+            {
+              "scope":"comment.block.documentation",
+              "settings": {
+                "foreground": "#59628b",
+              }
+            }
+          ]
+        }  
+    },
+    "editor.guides.bracketPairs": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.minimap.enabled": false,
+    "git.mergeEditor": false,
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[markdown]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.cursorBlinking": "phase",
+    "editor.cursorSmoothCaretAnimation": true,
+    "editor.cursorStyle": "block",
+    "editor.bracketPairColorization.enabled": true,
+    "[css]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[scss]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.renderWhitespace": "all",
+    "[javascriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.inlineSuggest.enabled": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "window.commandCenter": true,
+    "editor.tabSize": 2,
+    "editor.fontFamily": "Fira Code Medium, monospace",
+    "editor.fontSize": 12,
+    "editor.fontLigatures": true,
+    "redhat.telemetry.enabled": false,
+    "workbench.colorTheme": "Tokyo Night",
+    "editor.stickyScroll.enabled": true,
+    "telemetry.telemetryLevel": "off",
+    "editor.smoothScrolling": true,
+    "workbench.list.smoothScrolling": true,
+    "gitlens.codeLens.enabled": false,
+    "gitlens.statusBar.format": "${author}, ${agoOrDate}${' via 'pullRequest}${ • message|50?}",
+    "gitlens.currentLine.enabled": false,
+    "gitlens.hovers.currentLine.over": "line",
+    "workbench.iconTheme": "symbols"
+}

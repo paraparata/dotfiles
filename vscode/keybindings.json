@@ -1,0 +1,52 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "ctrl+h",
+        "command": "-deleteLeft",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "-deleteAllRight",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+/",
+        "command": "workbench.action.gotoLine"
+    },
+    {
+        "key": "ctrl+g",
+        "command": "-workbench.action.gotoLine"
+    },
+    {
+        "key": "ctrl+`",
+        "command": "-workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
+        "key": "cmd+k l",
+        "command": "workbench.action.splitEditorToRightGroup"
+    },
+    {
+        "key": "cmd+k h",
+        "command": "workbench.action.splitEditorToLeftGroup"
+    },
+    {
+        "key": "cmd+k a",
+        "command": "workbench.action.toggleCenteredLayout"
+    },
+    {
+        "key": "shift+cmd+b",
+        "command": "workbench.action.toggleAuxiliaryBar"
+    },
+    {
+        "key": "alt+cmd+b",
+        "command": "workbench.action.tasks.build",
+        "when": "taskCommandsRegistered"
+    },
+    {
+        "key": "shift+cmd+b",
+        "command": "-workbench.action.tasks.build",
+        "when": "taskCommandsRegistered"
+    }
+]
