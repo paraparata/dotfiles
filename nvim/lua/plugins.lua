@@ -11,6 +11,7 @@ packer.startup(function(use)
 
   -- color scheme
   use 'folke/tokyonight.nvim'
+  use { "catppuccin/nvim", as = "catppuccin" }
 
   -- status bar
   use {
@@ -33,7 +34,6 @@ packer.startup(function(use)
   use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
   use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
   use 'hrsh7th/nvim-cmp' -- Completion
-  use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
   use 'L3MON4D3/LuaSnip'
 
   -- highlighter
@@ -44,6 +44,13 @@ packer.startup(function(use)
 
   -- fuzzy finder
   use 'nvim-telescope/telescope.nvim'
+  -- use { "nvim-telescope/telescope-file-browser.nvim", branch = 'feat/tree' } -- file browser using telescope
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    },
+  }
 
   -- pairing
   use 'windwp/nvim-autopairs'
@@ -51,4 +58,17 @@ packer.startup(function(use)
 
   -- formatter
   use('MunifTanjim/prettier.nvim')
+
+  -- ccomment
+  use { 'numToStr/Comment.nvim',
+    requires = {
+      'JoosepAlviste/nvim-ts-context-commentstring'
+    }
+  }
+
+  -- highlight color
+  use 'norcalli/nvim-colorizer.lua'
+
+  -- git diff
+  use { 'sindrets/diffview.nvim', requires = { 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons' } }
 end)

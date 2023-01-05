@@ -123,7 +123,7 @@ ins_left {
   padding = 0
 }
 
-ins_left { 
+ins_left {
   function()
     return 'on'
   end,
@@ -209,7 +209,7 @@ ins_right { 'location', padding = 0 }
 
 ins_right {
   function()
-    return '🌼' 
+    return '🌼'
   end,
   padding = { right = 0 }
 }
