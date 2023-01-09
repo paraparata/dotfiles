@@ -13,6 +13,9 @@ packer.startup(function(use)
   use 'folke/tokyonight.nvim'
   use { "catppuccin/nvim", as = "catppuccin" }
 
+  -- icons
+  use 'kyazdani42/nvim-web-devicons'
+
   -- status bar
   use {
     'nvim-lualine/lualine.nvim',
@@ -55,6 +58,7 @@ packer.startup(function(use)
   -- pairing
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
+  use "lukas-reineke/indent-blankline.nvim"
 
   -- formatter
   use('MunifTanjim/prettier.nvim')

@@ -7,6 +7,10 @@ vim.g.mapleader = " "
 keymap.set("i", "jj", "<esc>", {})
 keymap.set("c", "jj", "<c-c>", {})
 
+-- True delete
+keymap.set("n", "<leader>d", '"_d', {})
+keymap.set("n", "<leader>x", '"_x', {})
+
 -- Increment/decrement
 keymap.set('n', '+', '<C-a>')
 keymap.set('n', '-', '<C-x>')

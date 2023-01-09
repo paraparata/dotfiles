@@ -196,3 +196,5 @@ require("diffview").setup({
     },
   },
 })
+
+vim.keymap.set('n', '<leader>B', '<Cmd>DiffviewOpen<CR>')

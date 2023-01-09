@@ -80,6 +80,10 @@ require("catppuccin").setup({
   custom_highlights = function(colors)
     return {
       CursorLineNr = { fg = colors.green },
+      LineNr = { bg = '#1e1e2e', fg = '#9b8c6a' },
+      IndentBlanklineChar = { fg = colors.surface0 },
+      IndentBlanklineContextChar = { fg = colors.peach },
+      IndentBlanklineContextStart = { sp = colors.peach, style = { "underline" } },
     }
   end,
   integrations = {
@@ -89,6 +93,10 @@ require("catppuccin").setup({
     telescope = true,
     notify = false,
     mini = false,
+    indent_blankline = {
+      enabled = true,
+      colored_indent_levels = false,
+    },
     -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
   },
 })
