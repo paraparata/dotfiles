@@ -125,7 +125,12 @@ ins_left {
 
 ins_left {
   function()
-    return 'on'
+    local branch = vim.fn.system("git branch --show-current 2> /dev/null | tr -d '\n'")
+    if branch ~= "" then
+      return 'on'
+    else
+      return ''
+    end
   end,
   padding = 1
 }
@@ -168,26 +173,26 @@ ins_left {
   end,
 }
 
-ins_left {
-  -- Lsp server name .
-  function()
-    local msg = 'No Active Lsp'
-    local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-    local clients = vim.lsp.get_active_clients()
-    if next(clients) == nil then
-      return msg
-    end
-    for _, client in ipairs(clients) do
-      local filetypes = client.config.filetypes
-      if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-        return client.name
-      end
-    end
-    return msg
-  end,
-  icon = ' LSP:',
-  color = { fg = '#ffffff', gui = 'bold' },
-}
+-- ins_left {
+--   -- Lsp server name .
+--   function()
+--     local msg = 'No Active Lsp'
+--     local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+--     local clients = vim.lsp.get_active_clients()
+--     if next(clients) == nil then
+--       return msg
+--     end
+--     for _, client in ipairs(clients) do
+--       local filetypes = client.config.filetypes
+--       if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+--         return client.name
+--       end
+--     end
+--     return msg
+--   end,
+--   icon = ' LSP:',
+--   color = { fg = '#ffffff', gui = 'bold' },
+-- }
 
 -- Add components to right sections
 ins_right {
@@ -205,7 +210,9 @@ ins_right {
   padding = 0
 }
 
-ins_right { 'location', padding = 0 }
+ins_right { 'location', padding = { left = 1, right = 0 } }
+
+ins_right { 'progress', color = { fg = colors.fg, gui = 'bold' }, padding = 1 }
 
 ins_right {
   function()
