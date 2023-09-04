@@ -47,3 +47,6 @@ vim.opt.formatoptions:append { 'r' }
 -- - Ctrl+C in other programs and put in Vim with p on all three platforms,
 -- - yank in Vim with y and Ctrl+V in other programs on all three platforms.
 vim.opt.clipboard:append { 'unnamedplus' }
+
+vim.opt.spelllang = 'en_us'
+vim.opt.spell = true
