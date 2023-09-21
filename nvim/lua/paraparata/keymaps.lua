@@ -22,12 +22,22 @@ keymap.set("x", "<leader>d", '"_d')
 keymap.set("n", "<leader>x", '"_x')
 keymap.set("x", "<leader>x", '"_x')
 
+-- move line
+keymap.set("n", "∆", ":m .+1<CR>==")
+keymap.set("n", "˚", ":m .-2<CR>==")
+keymap.set("v", "∆", ":m '>+1<CR>gv=gv")
+keymap.set("v", "˚", ":m '<-2<CR>gv=gv")
+
 -- Replace same word with confirmation
 -- First select the word or text then
 -- With this we can use the leader key + j to replace the word under the cursor.
 -- We can navigate to other matches with n or N,
 -- then use the . key when we want to replace the text.
-keymap.set("n", "<leader>j", "<C-a>")
+keymap.set("n", "<leader>j", "*``cgn")
+
+-- Replace from surround. Anything from what surround kirby (\(.*\)) will be replaced.
+-- Use \1 as reference to kirby.
+keymap.set("c", "<C-\\>", "\\(.*\\)")
 
 -- Increment/decrement
 keymap.set("n", "+", "<C-a>")
@@ -66,3 +76,6 @@ keymap.set("n", "<C-w><down>", "<C-w>-")
 keymap.set("n", "<leader>bn", ":bn<Return>")
 keymap.set("n", "<leader>bp", ":bp<Return>")
 keymap.set("n", "<leader>bd", ":bd<Return>")
+
+-- Delete all buffers except the current opened one
+keymap.set("n", "<leader>bx", ':%bdelete|edit #|normal `"<CR>')
