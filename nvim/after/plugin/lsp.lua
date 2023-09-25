@@ -71,6 +71,11 @@ lsp.on_attach(function(client, bufnr)
 	end, opts)
 end)
 
+-- ruby LSP
+lsp.configure("solargraph", {
+	force_setup = true,
+})
+
 lsp.setup()
 
 vim.diagnostic.config({

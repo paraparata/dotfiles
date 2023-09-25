@@ -40,6 +40,7 @@ local config = {
 			inactive = { c = { fg = colors.fg, bg = colors.darkblue } },
 			active = { c = { fg = colors.bg, bg = colors.green } },
 		},
+		globalstatus = true,
 	},
 	sections = {
 		lualine_a = {},
