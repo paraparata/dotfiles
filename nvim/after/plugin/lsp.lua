@@ -72,9 +72,10 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 -- ruby LSP
-lsp.configure("solargraph", {
+require("lspconfig").rubocop.setup({})
+--[[ lsp.configure("solargraph", {
 	force_setup = true,
-})
+}) ]]
 
 lsp.setup()
 
