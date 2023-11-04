@@ -13,6 +13,7 @@ alias gmconflict='gm --no-commit --no-ff'
 alias gmconflict-diff='git diff --cached'
 alias gmconflict-quit='gm --abort'
 alias gadc='git add . && git commit -m'
+alias bringz='git pull'
 
 # gitweet
 alias gitweet='f() { git commit --allow-empty -m $1 && git push };f'

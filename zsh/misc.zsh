@@ -1,5 +1,2 @@
-# starship
-eval "$(starship init zsh)"
-
-# rtx => asdf alternative (runtime manager)
-eval "$(rtx activate zsh)"
+# fzf (C-t)
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
