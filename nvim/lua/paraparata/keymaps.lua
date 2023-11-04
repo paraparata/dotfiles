@@ -16,6 +16,9 @@ keymap.set("c", "jj", "<c-c>", {})
 -- True paste (get only from y)
 keymap.set("n", "<leader>pp", '"0p')
 
+-- prevent c(hange) to copy
+keymap.set("n", "c", '"0c')
+
 -- True delete
 keymap.set("n", "<leader>d", '"_d')
 keymap.set("x", "<leader>d", '"_d')

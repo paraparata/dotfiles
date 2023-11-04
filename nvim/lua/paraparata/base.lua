@@ -1,4 +1,5 @@
 vim.cmd("autocmd!")
+vim.cmd([[set splitright]])
 
 vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
@@ -24,7 +25,7 @@ vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in 
 vim.opt.smarttab = true
 vim.opt.breakindent = true
 vim.opt.shiftwidth = 2
--- vim.opt.tabstop = 4
+vim.opt.tabstop = 4
 vim.opt.wrap = false -- No Wrap lines
 vim.opt.backspace = { "start", "eol", "indent" }
 vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders

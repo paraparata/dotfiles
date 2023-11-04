@@ -20,7 +20,8 @@ Plug 'rebelot/kanagawa.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
+Plug 'nvim-tree/nvim-web-devicons'
 
 " LSP Support
 Plug 'neovim/nvim-lspconfig'             " Required
@@ -55,6 +56,8 @@ Plug 'sindrets/diffview.nvim'
 Plug 'mfussenegger/nvim-lint'
 
 Plug 'lukas-reineke/indent-blankline.nvim'
+
+Plug 'lewis6991/gitsigns.nvim'
 
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.

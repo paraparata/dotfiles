@@ -16,7 +16,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 	["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
 	["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
 	["<CR>"] = cmp.mapping.confirm({ select = true }),
-	["<C-Space>"] = cmp.mapping.complete(),
+	["<C-;>"] = cmp.mapping.complete(),
 })
 
 cmp_mappings["<Tab>"] = nil
@@ -24,6 +24,12 @@ cmp_mappings["<S-Tab>"] = nil
 
 lsp.setup_nvim_cmp({
 	mapping = cmp_mappings,
+	performance = {
+		debounce = 100,
+	},
+	completion = {
+		keyword_length = 1,
+	},
 })
 
 lsp.set_preferences({
@@ -36,11 +42,17 @@ lsp.set_preferences({
 	},
 })
 
-lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(_, bufnr)
 	local opts = { buffer = bufnr, remap = false }
 
 	vim.keymap.set("n", "gd", function()
 		vim.lsp.buf.definition()
+	end, opts)
+	vim.keymap.set("n", "gv", function()
+		vim.cmd([[vsplit | lua vim.lsp.buf.definition()]])
+	end, opts)
+	vim.keymap.set("n", "gV", function()
+		vim.cmd([[tab split | lua vim.lsp.buf.definition()]])
 	end, opts)
 	vim.keymap.set("n", "K", function()
 		vim.lsp.buf.hover()
@@ -73,9 +85,12 @@ end)
 
 -- ruby LSP
 require("lspconfig").rubocop.setup({})
---[[ lsp.configure("solargraph", {
-	force_setup = true,
+--[[ require("lspconfig").tsserver.setup({
+	root_dir = require("lspconfig.util").root_pattern(".git"),
 }) ]]
+
+-- graphql LSP
+require("lspconfig").graphql.setup({})
 
 lsp.setup()
 

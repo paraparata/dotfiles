@@ -76,7 +76,7 @@ require("diffview").setup({
 	},
 	hooks = {}, -- See ':h diffview-config-hooks'
 	keymaps = {
-		disable_defaults = false, -- Disable the default keymaps
+		disable_defaults = true, -- Disable the default keymaps
 		view = {
 			{
 				"n",
