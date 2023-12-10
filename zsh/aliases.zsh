@@ -39,6 +39,13 @@ alias gorr="go run ."
 alias bund="bun run dev"
 alias burr="bun run"
 
+# python
+alias servv="python3 -m http.server 8000"
+
+# docker
+alias posgre-up="limactl start docker && docker start postgres"
+alias posgre-down="docker stop postgres && limactl stop docker"
+
 # c
 #alias crun='f() { clang -o ${$1/.c/""} $1 && ./${$1/.c/""} };f'
 
