@@ -3,6 +3,12 @@ if not status then
 	return
 end
 
+local status, ft = pcall(require, "Comment.ft")
+if status then
+	-- Set only line comment
+	ft.set("ruby", "#%s")
+end
+
 comment.setup({
 	toggler = {
 		---Line-comment toggle keymap
@@ -13,7 +19,7 @@ comment.setup({
 	---LHS of operator-pending mappings in NORMAL and VISUAL mode
 	opleader = {
 		---Line-comment keymap
-		line = "gc",
+		line = "<leader>/",
 		---Block-comment keymap
 		block = "<leader>,",
 	},

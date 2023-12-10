@@ -8,6 +8,7 @@ vim.g.mapleader = " "
 
 -- Open NetRW
 keymap.set("n", "<leader>pv", vim.cmd.Ex)
+keymap.set("n", "<leader>pV", vim.cmd.Lexplore)
 
 -- Change escape function
 keymap.set("i", "jj", "<esc>", {})

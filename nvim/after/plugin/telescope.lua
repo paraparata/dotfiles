@@ -4,8 +4,8 @@ local builtin = require("telescope.builtin")
 telescope.setup({
 	defaults = {
 		file_ignore_patterns = { "^.git/" },
-		prompt_prefix = "◕  ",
-		selection_caret = "⏵  ",
+		prompt_prefix = "▷  ",
+		selection_caret = "▶  ",
 		path_display = {
 			shorten = { len = 3, exclude = { 1, -1, -2 } },
 		},
@@ -27,5 +27,5 @@ vim.keymap.set("n", "<leader>pb", function()
 	builtin.buffers({ sort_mru = true })
 end, {})
 vim.keymap.set("n", "<leader>ps", function()
-	builtin.git_status(require("telescope.themes").get_dropdown())
+	builtin.git_status(require("telescope.themes").get_ivy({ previewer = false }))
 end, {})

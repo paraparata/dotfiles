@@ -44,6 +44,7 @@ require("gitsigns").setup({
 			return "<Ignore>"
 		end, { expr = true })
 
+		map("n", "<leader>hr", gs.reset_hunk)
 		map("n", "<leader>hp", gs.preview_hunk)
 		map("n", "<leader>hb", gs.toggle_current_line_blame)
 		map("n", "<leader>hd", gs.diffthis)

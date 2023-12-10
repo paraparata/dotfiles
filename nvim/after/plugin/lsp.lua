@@ -83,14 +83,30 @@ lsp.on_attach(function(_, bufnr)
 	end, opts)
 end)
 
--- ruby LSP
-require("lspconfig").rubocop.setup({})
---[[ require("lspconfig").tsserver.setup({
-	root_dir = require("lspconfig.util").root_pattern(".git"),
-}) ]]
-
--- graphql LSP
-require("lspconfig").graphql.setup({})
+require("mason-lspconfig").setup({
+	handlers = {
+		lsp.default_setup,
+		solargraph = function()
+			require("lspconfig").solargraph.setup({
+				settings = {
+					solargraph = {
+						diagnostics = true,
+					},
+				},
+				init_options = { formatting = true },
+			})
+		end,
+		html = function()
+			require("lspconfig").html.setup({
+				init_options = {
+					provideFormatter = true,
+					embeddedLanguages = { css = true, javascript = true },
+					configurationSection = { "html", "css", "javascript" },
+				},
+			})
+		end,
+	},
+})
 
 lsp.setup()
 
