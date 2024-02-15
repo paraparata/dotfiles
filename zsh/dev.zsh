@@ -1,5 +1,5 @@
 # rtx => asdf alternative (runtime manager)
-eval "$(rtx activate zsh)"
+eval "$(mise activate zsh)"
 
 # yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

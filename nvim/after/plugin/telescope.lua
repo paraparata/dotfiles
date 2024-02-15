@@ -1,5 +1,6 @@
 local telescope = require("telescope")
 local builtin = require("telescope.builtin")
+local utils = require("telescope.utils")
 
 telescope.setup({
 	defaults = {
@@ -16,6 +17,9 @@ telescope.setup({
 
 vim.keymap.set("n", "<leader>pf", function()
 	builtin.find_files({ hidden = true })
+end, {})
+vim.keymap.set("n", "<leader>pF", function()
+	builtin.find_files({ hidden = true, cwd = utils.buffer_dir() })
 end, {})
 vim.keymap.set("n", "<leader>pg", function()
 	builtin.live_grep()

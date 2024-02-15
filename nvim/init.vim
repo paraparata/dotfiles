@@ -61,6 +61,8 @@ Plug 'lewis6991/gitsigns.nvim'
 
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 
+Plug 'nvim-tree/nvim-tree.lua'
+
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()

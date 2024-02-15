@@ -13,6 +13,12 @@ local prettierConfig = function()
 end
 
 local formatterConfig = {
+	elixir = {
+		require("formatter.filetypes.elixir").mixformat,
+	},
+	heex = {
+		require("formatter.filetypes.elixir").mixformat,
+	},
 	lua = {
 		require("formatter.filetypes.lua").stylua,
 

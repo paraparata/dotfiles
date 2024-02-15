@@ -7,8 +7,20 @@ require("kanagawa").setup({
 	statementStyle = { bold = true },
 	typeStyle = {},
 	transparent = false, -- do not set background color
-	dimInactive = true, -- dim inactive window `:h hl-NormalNC`
+	dimInactive = false, -- dim inactive window `:h hl-NormalNC`
 	terminalColors = true, -- define vim.g.terminal_color_{0,17}
+	colors = {
+		-- https://github.com/rebelot/kanagawa.nvim/blob/master/lua/kanagawa/themes.lua
+		theme = {
+			wave = {
+				ui = {
+					bg_gutter = "#16161C",
+					bg_dim = "#0A0C10",
+					bg = "#16161C",
+				},
+			},
+		},
+	},
 })
 
 vim.cmd("colorscheme kanagawa")

@@ -47,7 +47,7 @@ alias posgre-up="limactl start docker && docker start postgres"
 alias posgre-down="docker stop postgres && limactl stop docker"
 
 # c
-#alias crun='f() { clang -o ${$1/.c/""} $1 && ./${$1/.c/""} };f'
+alias crun='f() { clang ${1}.c -o $1  && ./$1 };f'
 
 
 # nx monorepo

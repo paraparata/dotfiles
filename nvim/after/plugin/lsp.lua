@@ -105,8 +105,44 @@ require("mason-lspconfig").setup({
 				},
 			})
 		end,
+		clangd = function()
+			require("lspconfig").clangd.setup({
+				on_attach = function(client)
+					client.server_capabilities.signatureHelpProvider = false
+				end,
+				filetypes = { "h", "c", "cpp", "cc", "objc", "objcpp" },
+				cmd = { "clangd", "--background-index" },
+				single_file_support = true,
+				root_dir = require("lspconfig").util.root_pattern(
+					".clangd",
+					".clang-tidy",
+					".clang-format",
+					"compile_commands.json",
+					"compile_flags.txt",
+					"configure.ac",
+					".git"
+				),
+			})
+		end,
 	},
 })
+
+-- ruby LSP
+--[[ require("lspconfig").solargraph.setup({
+	settings = {
+		solargraph = {
+			diagnostics = true,
+		},
+	},
+	init_options = { formatting = true },
+}) ]]
+-- require("lspconfig").rubocop.setup({})
+--[[ require("lspconfig").tsserver.setup({
+	root_dir = require("lspconfig.util").root_pattern(".git"),
+}) ]]
+
+-- graphql LSP
+-- require("lspconfig").graphql.setup({})
 
 lsp.setup()
 
