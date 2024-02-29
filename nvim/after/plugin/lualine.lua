@@ -4,8 +4,9 @@
 local lualine = require("lualine")
 
 local colors = {
-	bg = "#202328",
-	fg = "#bbc2cf",
+	bg = "#16161C",
+	fg = "#787c99",
+	disabled = "#717174",
 	yellow = "#e0af68",
 	blue = "#7dcfff",
 	darkblue = "#081633",
@@ -36,9 +37,9 @@ local config = {
 		component_separators = "",
 		section_separators = "",
 		theme = {
-			normal = { c = { fg = colors.orange, bg = colors.bg } },
-			inactive = { c = { fg = colors.fg, bg = colors.darkblue } },
-			active = { c = { fg = colors.bg, bg = colors.green } },
+			normal = { c = { fg = colors.fg, bg = colors.bg } },
+			inactive = { c = { fg = colors.disabled, bg = colors.darkblue } },
+			active = { c = { fg = colors.bg, bg = colors.bg } },
 		},
 		globalstatus = true,
 	},
@@ -125,7 +126,7 @@ ins_left({
 ins_left({
 	"branch",
 	icon = "",
-	color = { fg = colors.violet, gui = "bold" },
+	color = { fg = colors.fg, gui = "bold" },
 	padding = { left = 1, right = 0 },
 })
 
@@ -133,9 +134,9 @@ ins_left({
 	"diff",
 	symbols = { added = " ", modified = "▣ ", removed = " " },
 	diff_color = {
-		added = { fg = colors.green },
-		modified = { fg = colors.orange },
-		removed = { fg = colors.red },
+		added = { fg = colors.fg },
+		modified = { fg = colors.fg },
+		removed = { fg = colors.fg },
 	},
 	cond = conditions.hide_in_width and conditions.buffer_not_empty,
 	padding = { left = 1, right = 0 },
@@ -145,11 +146,12 @@ ins_left({
 	"diagnostics",
 	sources = { "nvim_diagnostic" },
 	symbols = { error = " ", warn = " ", info = " " },
-	diagnostics_color = {
-		color_error = { fg = colors.red },
-		color_warn = { fg = colors.yellow },
-		color_info = { fg = colors.cyan },
-	},
+	-- diagnostics_color = {
+	-- 	color_error = { fg = colors.red },
+	-- 	color_warn = { fg = colors.fg },
+	-- 	color_info = { fg = colors.fg },
+	-- },
+	colored = false,
 	padding = 1,
 	cond = conditions.hide_in_width and conditions.buffer_not_empty,
 })
@@ -164,7 +166,7 @@ ins_right({
 	"o:encoding", -- option component same as &encoding in viml
 	fmt = string.upper, -- I'm not sure why it's upper case either ;)
 	cond = conditions.hide_in_width and conditions.buffer_not_empty,
-	color = { fg = colors.green, gui = "bold" },
+	-- color = { fg = colors.green, gui = "bold" },
 	padding = { left = 1, right = 0 },
 })
 
@@ -172,7 +174,7 @@ ins_right({
 	"filetype",
 	fmt = string.lower,
 	icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-	color = { fg = colors.green, gui = "bold" },
+	-- color = { fg = colors.fg, gui = "bold" },
 	padding = { left = 1, right = 0 },
 	cond = conditions.buffer_not_empty,
 })

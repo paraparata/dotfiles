@@ -1,7 +1,7 @@
 local M = {}
 
-vim.api.nvim_set_hl(0, "WinBar", { fg = "#000000", bg = "#bb9af7" })
-vim.api.nvim_set_hl(0, "WinBarNC", { fg = "#7C936E" })
+vim.api.nvim_set_hl(0, "WinBar", { fg = "#bb9af7" })
+vim.api.nvim_set_hl(0, "WinBarNC", { fg = "#787c99" })
 -- vim.api.nvim_set_hl(0, "WinBarPath", { fg = "#7C936E" })
 -- vim.api.nvim_set_hl(0, "WinBarModified", { fg = "green", bg = "#bb9af7" })
 -- vim.api.nvim_set_hl(0, "WinBarModifiedNC", { fg = "#F2A470" })

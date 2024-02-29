@@ -81,6 +81,7 @@ lsp.on_attach(function(_, bufnr)
 	vim.keymap.set("i", "<C-h>", function()
 		vim.lsp.buf.signature_help()
 	end, opts)
+	vim.keymap.set("i", "<C-Space>", "<C-x><C-o>", opts)
 end)
 
 require("mason-lspconfig").setup({
@@ -105,26 +106,27 @@ require("mason-lspconfig").setup({
 				},
 			})
 		end,
-		clangd = function()
-			require("lspconfig").clangd.setup({
-				on_attach = function(client)
-					client.server_capabilities.signatureHelpProvider = false
-				end,
-				filetypes = { "h", "c", "cpp", "cc", "objc", "objcpp" },
-				cmd = { "clangd", "--background-index" },
-				single_file_support = true,
-				root_dir = require("lspconfig").util.root_pattern(
-					".clangd",
-					".clang-tidy",
-					".clang-format",
-					"compile_commands.json",
-					"compile_flags.txt",
-					"configure.ac",
-					".git"
-				),
-			})
-		end,
+		-- clangd = function()
+		-- end,
 	},
+})
+
+require("lspconfig").clangd.setup({
+	on_attach = function(client)
+		client.server_capabilities.signatureHelpProvider = false
+	end,
+	filetypes = { "h", "c", "cpp", "cc", "objc", "objcpp" },
+	cmd = { "clangd", "--background-index" },
+	single_file_support = true,
+	root_dir = require("lspconfig").util.root_pattern(
+		".clangd",
+		".clang-tidy",
+		".clang-format",
+		"compile_commands.json",
+		"compile_flags.txt",
+		"configure.ac",
+		".git"
+	),
 })
 
 -- ruby LSP

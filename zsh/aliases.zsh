@@ -43,8 +43,10 @@ alias burr="bun run"
 alias servv="python3 -m http.server 8000"
 
 # docker
-alias posgre-up="limactl start docker && docker start postgres"
-alias posgre-down="docker stop postgres && limactl stop docker"
+# alias posgre-up="limactl start docker && docker start postgres"
+# alias posgre-down="docker stop postgres && limactl stop docker"
+alias posgre-up="brew services start postgresql@16"
+alias posgre-down="brew services stop postgresql@16"
 
 # c
 alias crun='f() { clang ${1}.c -o $1  && ./$1 };f'
