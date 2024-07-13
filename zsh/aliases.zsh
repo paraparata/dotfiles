@@ -3,6 +3,7 @@ alias nv="nvim"
 # git
 alias gsws="gsw staging"
 alias gswb="gsw beta"
+alias gfspm="gf && gswm && git pull"
 alias gfspb="gf && gswb && git pull"
 alias gfsps="gf && gsws && git pull"
 alias gfspd="gf && gswd && git pull"
@@ -32,6 +33,14 @@ alias npmf="npm run format"
 alias npml="npm run lint"
 alias npmc="npm run commit"
 
+# yarn
+alias yarnd="yarn run dev"
+alias yarntc="yarn run type-check"
+alias yarnf="yarn run format"
+alias yarnl="yarn run lint"
+alias yarnc="yarn run commit"
+
+
 # golang
 alias gorr="go run ."
 
@@ -45,8 +54,9 @@ alias servv="python3 -m http.server 8000"
 # docker
 # alias posgre-up="limactl start docker && docker start postgres"
 # alias posgre-down="docker stop postgres && limactl stop docker"
-alias posgre-up="brew services start postgresql@16"
-alias posgre-down="brew services stop postgresql@16"
+alias postgre-up="brew services start postgresql@16"
+alias postgre-down="brew services stop postgresql@16"
+alias postgre-list="psql -l"
 
 # c
 alias crun='f() { clang ${1}.c -o $1  && ./$1 };f'
