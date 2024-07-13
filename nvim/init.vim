@@ -15,6 +15,8 @@ call plug#begin()
 
 " colorscheme
 Plug 'rebelot/kanagawa.nvim'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'folke/tokyonight.nvim'
 
 " nvim treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
