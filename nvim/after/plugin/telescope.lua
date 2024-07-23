@@ -4,6 +4,9 @@ local utils = require("telescope.utils")
 
 telescope.setup({
 	defaults = {
+		preview = {
+			filesize_limit = 1, -- MB
+		},
 		file_ignore_patterns = { "^.git/" },
 		prompt_prefix = "▷  ",
 		selection_caret = "▶  ",
