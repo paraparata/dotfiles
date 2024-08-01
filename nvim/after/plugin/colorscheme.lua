@@ -180,13 +180,19 @@ require("tokyonight").setup({
 		-- h["@lsp.typemod.parameter.declaration.typescriptreact"] = { fg = c.fg_dark }
 		-- h["@lsp.type.parameter.typescriptreact"] = { fg = c.fg_dark }
 
+		h.NvimTreeWindowPicker = {
+			fg = c.black,
+			bg = c.purple,
+		}
 		-- Telescope
 		h.TelescopeBorder = {
 			fg = "#5A607F",
 		}
 
 		-- Window
+		-- h.TabLine = { fg = c.comment, bg = "#000000" }
 		h.TabLineSel = { fg = c.purple }
+		-- h.TabLineFill = { bg = "#000000" }
 	end,
 })
 
