@@ -49,7 +49,7 @@ keymap.set("n", "+", "<C-a>")
 keymap.set("n", "-", "<C-x>")
 
 -- Select all
-keymap.set("n", "<C-a>", "gg<S-v>G")
+keymap.set("n", "<leader>a", "gg<S-v>G")
 
 -- Virtual block
 keymap.set("n", "<leader>v", "<C-v>")

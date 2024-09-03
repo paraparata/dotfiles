@@ -14,8 +14,6 @@ call plug#begin()
 " Make sure you use single quotes
 
 " colorscheme
-Plug 'rebelot/kanagawa.nvim'
-Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'folke/tokyonight.nvim'
 
 " nvim treesitter

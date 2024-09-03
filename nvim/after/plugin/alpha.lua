@@ -27,7 +27,7 @@ local head = {
 
 local foot = {
 	type = "text",
-	val = "dreaming solarpunk",
+	val = "Discipline -> Growth",
 	opts = {
 		position = "center",
 		hl = "String",

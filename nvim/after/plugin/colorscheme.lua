@@ -149,7 +149,7 @@ require("tokyonight").setup({
 	sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
 	day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
 	hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
-	dim_inactive = false, -- dims inactive windows
+	dim_inactive = true, -- dims inactive windows
 	lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
 
 	--- You can override specific color groups to use other groups or a hex color
@@ -158,6 +158,7 @@ require("tokyonight").setup({
 	on_colors = function(colors)
 		colors.bg = "#16161C"
 		colors.bg_dark = "#16161C"
+		colors.red = "#de5971"
 	end,
 
 	--- You can override specific highlights to use other groups or a hex color
@@ -165,8 +166,12 @@ require("tokyonight").setup({
 	---@param highlights Highlights
 	---@param colors ColorScheme
 	on_highlights = function(h, c)
+		h.SpellBad = { sp = c.error, undercurl = false } -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
+		h.SpellCap = { sp = c.warning, undercurl = false } -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
+		h.SpellLocal = { sp = c.info, undercurl = false } -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
+		h.SpellRare = { sp = c.hint, undercurl = false }
 		-- TS/TSX
-		h["@tag.attribute.tsx"] = { fg = c.purple }
+		h["@tag.attribute.tsx"] = { fg = c.magenta }
 		h["@type.tsx"] = { fg = c.fg_dark }
 		h["@lsp.type.type.typescript"] = { fg = c.fg_dark }
 		h["@lsp.type.type.typescriptreact"] = { fg = c.fg_dark }
