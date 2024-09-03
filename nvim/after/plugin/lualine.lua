@@ -18,19 +18,29 @@ local colors = {
 	red = "#f7768e",
 }
 
-local conditions = {
-	buffer_not_empty = function()
-		return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
-	end,
-	hide_in_width = function()
-		return vim.fn.winwidth(0) > 80
-	end,
-	check_git_workspace = function()
-		local filepath = vim.fn.expand("%:p:h")
-		local gitdir = vim.fn.finddir(".git", filepath .. ";")
-		return gitdir and #gitdir > 0 and #gitdir < #filepath
-	end,
-}
+local buffer_not_empty = function()
+	return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
+end
+local hide_in_width = function()
+	return vim.fn.winwidth(0) > 80
+end
+local check_git_workspace = function()
+	local filepath = vim.fn.expand("%:p:h")
+	local gitdir = vim.fn.finddir(".git", filepath .. ";")
+	return gitdir and #gitdir > 0 and #gitdir < #filepath
+end
+local check_wip = function()
+	local is_git = check_git_workspace()
+	if is_git == false then
+		return false
+	end
+	local out = vim.fn.system("git rev-list HEAD -1 --grep=wip: --count")
+	local val = false
+	if out == "1\n" then
+		val = true
+	end
+	return val
+end
 
 local config = {
 	options = {
@@ -105,29 +115,65 @@ ins_left({
 
 ins_left({
 	"filesize",
-	cond = conditions.buffer_not_empty and conditions.hide_in_width,
+	cond = buffer_not_empty and hide_in_width,
 	padding = { left = 1, right = 0 },
 })
 
 ins_left({
-	"filename",
-	symbols = { modified = "[⊚]" },
+	function()
+		local parent_folder = vim.fn.substitute(vim.fn.getcwd(), "^.*/", "", "")
+		return parent_folder .. "#"
+	end,
 	padding = { left = 1, right = 0 },
+	cond = hide_in_width,
+})
+
+ins_left({
+	"filename",
+	symbols = { modified = "[⊚]", unnamed = "[Scratch]", new = "[⚹]" },
+	padding = { left = 0, right = 0 },
+	cond = hide_in_width,
 })
 
 ins_left({
 	function()
 		return "on"
 	end,
-	padding = { left = 1, right = 0 },
-	cond = conditions.check_git_workspace,
+	padding = { left = 1, right = 1 },
+	cond = check_git_workspace,
 })
+--
+-- ins_left({
+-- 	function()
+-- 		return check_wip() and "WIP" or ""
+-- 	end,
+-- 	color = { fg = colors.bg, bg = colors.orange, gui = "bold" },
+-- })
 
 ins_left({
 	"branch",
-	icon = "",
-	color = { fg = colors.fg, gui = "bold" },
-	padding = { left = 1, right = 0 },
+	icon = "",
+	fmt = function(display_string, context)
+		local branch = display_string
+		if branch == "" then
+			return ""
+		end
+
+		if #display_string > 20 then
+			branch = display_string:sub(1, 25) .. "..."
+		end
+
+		local is_wip = check_wip() and "WIP" or ""
+		return is_wip .. "  " .. branch
+	end,
+	color = function()
+		return {
+			fg = check_wip() and colors.bg or colors.fg,
+			bg = check_wip() and colors.orange or colors.bg,
+			gui = "bold",
+		}
+	end,
+	padding = { left = 0, right = 1 },
 })
 
 ins_left({
@@ -138,7 +184,7 @@ ins_left({
 		modified = { fg = colors.fg },
 		removed = { fg = colors.fg },
 	},
-	cond = conditions.hide_in_width and conditions.buffer_not_empty,
+	cond = hide_in_width and buffer_not_empty,
 	padding = { left = 1, right = 0 },
 })
 
@@ -153,20 +199,19 @@ ins_left({
 	-- },
 	colored = false,
 	padding = 1,
-	cond = conditions.hide_in_width and conditions.buffer_not_empty,
+	cond = hide_in_width and buffer_not_empty,
 })
 
 ins_right({
 	"location",
-	cond = conditions.buffer_not_empty,
+	cond = buffer_not_empty,
 	padding = { left = 1, right = 0 },
 })
 
 ins_right({
 	"o:encoding", -- option component same as &encoding in viml
 	fmt = string.upper, -- I'm not sure why it's upper case either ;)
-	cond = conditions.hide_in_width and conditions.buffer_not_empty,
-	-- color = { fg = colors.green, gui = "bold" },
+	cond = hide_in_width or buffer_not_empty,
 	padding = { left = 1, right = 0 },
 })
 
@@ -174,14 +219,13 @@ ins_right({
 	"filetype",
 	fmt = string.lower,
 	icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-	-- color = { fg = colors.fg, gui = "bold" },
 	padding = { left = 1, right = 0 },
-	cond = conditions.buffer_not_empty,
+	cond = buffer_not_empty,
 })
 
 ins_right({
 	function()
-		return "🌼"
+		return check_wip() and "🚧" or "🌼"
 	end,
 	padding = { left = 1, right = 0 },
 })
