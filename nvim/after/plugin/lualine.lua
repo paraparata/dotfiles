@@ -2,6 +2,7 @@
 -- Author: paraprata
 -- Credit: glepnir
 local lualine = require("lualine")
+local git_branch = require("lualine.components.branch.git_branch")
 
 local colors = {
 	bg = "#16161C",
@@ -21,25 +22,38 @@ local colors = {
 local buffer_not_empty = function()
 	return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
 end
+
 local hide_in_width = function()
 	return vim.fn.winwidth(0) > 80
 end
+
 local check_git_workspace = function()
-	local filepath = vim.fn.expand("%:p:h")
-	local gitdir = vim.fn.finddir(".git", filepath .. ";")
-	return gitdir and #gitdir > 0 and #gitdir < #filepath
+	return git_branch.get_branch() ~= ""
 end
+
+local cache_branch = ""
+local cache_wip = false
 local check_wip = function()
-	local is_git = check_git_workspace()
-	if is_git == false then
+	local branch = git_branch.get_branch()
+	if branch == "" then
 		return false
 	end
-	local out = vim.fn.system("git rev-list HEAD -1 --grep=wip: --count")
-	local val = false
-	if out == "1\n" then
-		val = true
+
+	if branch == cache_branch then
+		return cache_wip
 	end
-	return val
+
+	if branch ~= cache_branch then
+		cache_branch = branch
+	end
+
+	local out = vim.fn.FugitiveExecute({ "rev-list", "HEAD", "-1", "--grep=wip:", "--count" }).stdout[1]
+	if out == "1" then
+		cache_wip = true
+		return true
+	end
+	cache_wip = false
+	return false
 end
 
 local config = {
@@ -143,37 +157,27 @@ ins_left({
 	cond = check_git_workspace,
 })
 --
--- ins_left({
--- 	function()
--- 		return check_wip() and "WIP" or ""
--- 	end,
--- 	color = { fg = colors.bg, bg = colors.orange, gui = "bold" },
--- })
+ins_left({
+	function()
+		return check_wip() and "WIP" or ""
+	end,
+	color = { fg = colors.bg, bg = colors.orange, gui = "bold" },
+})
 
 ins_left({
 	"branch",
-	icon = "",
-	fmt = function(display_string, context)
-		local branch = display_string
-		if branch == "" then
-			return ""
-		end
-
+	icon = "",
+	fmt = function(display_string)
 		if #display_string > 20 then
-			branch = display_string:sub(1, 25) .. "..."
+			return display_string:sub(1, 25) .. "..."
+		else
+			return display_string
 		end
-
-		local is_wip = check_wip() and "WIP" or ""
-		return is_wip .. "  " .. branch
 	end,
 	color = function()
-		return {
-			fg = check_wip() and colors.bg or colors.fg,
-			bg = check_wip() and colors.orange or colors.bg,
-			gui = "bold",
-		}
+		return { fg = colors.fg, bg = colors.bg, gui = "bold" }
 	end,
-	padding = { left = 0, right = 1 },
+	padding = { left = 1, right = 1 },
 })
 
 ins_left({

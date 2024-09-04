@@ -13,6 +13,7 @@ vim.opt.fileencoding = "utf-8"
 
 vim.wo.number = true
 
+-- vim.opt.guicursor = "i-ci-ve:ver25-blinkwait10000-blinkoff100-blinkon200,r-cr-o:hor20,n-v-c-sm:block-blinkon0"
 vim.opt.cursorline = true
 vim.opt.relativenumber = true
 vim.opt.title = true
