@@ -201,6 +201,8 @@ require("tokyonight").setup({
 	end,
 })
 
+-- require("poimandres").setup({})
+
 vim.cmd("colorscheme tokyonight-night")
 -- vim.cmd("colorscheme catppuccin")
 -- vim.cmd("colorscheme kanagawa")

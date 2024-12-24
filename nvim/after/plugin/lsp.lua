@@ -3,7 +3,6 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-	"tsserver",
 	"rust_analyzer",
 })
 
@@ -76,6 +75,9 @@ lsp.on_attach(function(_, bufnr)
 	vim.keymap.set("n", "gd", function()
 		vim.lsp.buf.definition()
 	end, opts)
+	vim.keymap.set("n", "gx", function()
+		vim.cmd([[split | lua vim.lsp.buf.definition()]])
+	end, opts)
 	vim.keymap.set("n", "gv", function()
 		vim.cmd([[vsplit | lua vim.lsp.buf.definition()]])
 	end, opts)
@@ -91,10 +93,13 @@ lsp.on_attach(function(_, bufnr)
 	vim.keymap.set("n", "<leader>vd", function()
 		vim.diagnostic.open_float()
 	end, opts)
-	vim.keymap.set("n", "[d", function()
+	vim.keymap.set("n", "]d", function()
 		vim.diagnostic.goto_next()
 	end, opts)
-	vim.keymap.set("n", "]d", function()
+	vim.keymap.set("n", "[d", function()
+		vim.diagnostic.goto_prev()
+	end, opts)
+	vim.keymap.set("n", "<leader>cd", function()
 		vim.diagnostic.goto_prev()
 	end, opts)
 	vim.keymap.set("n", "<leader>vca", function()
@@ -139,12 +144,16 @@ require("mason-lspconfig").setup({
 	},
 })
 
+-- C/C-- config
 require("lspconfig").clangd.setup({
 	on_attach = function(client)
 		client.server_capabilities.signatureHelpProvider = false
 	end,
 	filetypes = { "h", "c", "cpp", "cc", "objc", "objcpp" },
-	cmd = { "clangd", "--background-index" },
+	cmd = { "clangd", "--background-index", "--clang-tidy" },
+	init_options = {
+		fallback_flags = { "-std=c11" },
+	},
 	single_file_support = true,
 	root_dir = require("lspconfig").util.root_pattern(
 		".clangd",
@@ -155,6 +164,48 @@ require("lspconfig").clangd.setup({
 		"configure.ac",
 		".git"
 	),
+})
+
+-- Zig config
+-- don't show parse errors in a separate window
+vim.g.zig_fmt_parse_errors = 0
+-- disable format-on-save from `ziglang/zig.vim`
+vim.g.zig_fmt_autosave = 0
+-- enable  format-on-save from nvim-lspconfig + ZLS
+--
+-- Formatting with ZLS matches `zig fmt`.
+-- The Zig FAQ answers some questions about `zig fmt`:
+-- https://github.com/ziglang/zig/wiki/FAQ
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = { "*.zig", "*.zon" },
+	callback = function()
+		vim.lsp.buf.format()
+	end,
+})
+
+require("lspconfig").zls.setup({
+	-- Server-specific settings. See `:help lspconfig-setup`
+
+	-- omit the following line if `zls` is in your PATH
+	-- cmd = { "/path/to/zls_executable" },
+	-- There are two ways to set config options:
+	--   - edit your `zls.json` that applies to any editor that uses ZLS
+	--   - set in-editor config options with the `settings` field below.
+	--
+	-- Further information on how to configure ZLS:
+	-- https://zigtools.org/zls/configure/
+	settings = {
+		zls = {
+			-- Whether to enable build-on-save diagnostics
+			--
+			-- Further information about build-on save:
+			-- https://zigtools.org/zls/guides/build-on-save/
+			-- enable_build_on_save = true,
+
+			-- omit the following line if `zig` is in your PATH
+			-- zig_exe_path = "/path/to/zig_executable",
+		},
+	},
 })
 
 -- ruby LSP

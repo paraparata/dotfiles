@@ -15,9 +15,11 @@ call plug#begin()
 
 " colorscheme
 Plug 'folke/tokyonight.nvim'
+" Plug 'paraparata/poimandres.nvim'
 
 " nvim treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-context'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
@@ -27,11 +29,13 @@ Plug 'nvim-tree/nvim-web-devicons'
 Plug 'neovim/nvim-lspconfig'             " Required
 Plug 'williamboman/mason.nvim',          " Optional
 Plug 'williamboman/mason-lspconfig.nvim' " Optional
+Plug 'ziglang/zig.vim'       					 	 " https://github.com/ziglang/zig.vim
 
 " Autocompletion
 Plug 'hrsh7th/nvim-cmp'     " Required
 Plug 'hrsh7th/cmp-nvim-lsp' " Required
 Plug 'L3MON4D3/LuaSnip'     " Required
+
 
 Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v2.x'}
 
