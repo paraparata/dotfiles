@@ -4,7 +4,7 @@
 
 ### Main Tools
 
-- **[alacritty](https://github.com/alacritty/alacritty):** Terminal
+- **[ghostty](https://github.com/ghostty-org/ghostty):** Terminal
 - **[neovim](https://github.com/neovim/neovim):** Editor
 - **zsh:** Shell
 - **[ohmyzsh](https://github.com/ohmyzsh/ohmyzsh):** Zsh config manager
