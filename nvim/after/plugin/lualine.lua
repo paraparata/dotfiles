@@ -136,18 +136,18 @@ ins_left({
 ins_left({
 	function()
 		local parent_folder = vim.fn.substitute(vim.fn.getcwd(), "^.*/", "", "")
-		return parent_folder .. "->"
+		return parent_folder
 	end,
 	padding = { left = 1, right = 0 },
 	cond = hide_in_width,
 })
 
-ins_left({
-	"filename",
-	symbols = { modified = "[⊚]", unnamed = "[Scratch]", new = "[⚹]" },
-	padding = { left = 0, right = 0 },
-	cond = hide_in_width,
-})
+-- ins_left({
+-- 	"filename",
+-- 	symbols = { modified = "[⊚]", unnamed = "[Scratch]", new = "[⚹]" },
+-- 	padding = { left = 0, right = 0 },
+-- 	cond = hide_in_width,
+-- })
 
 ins_left({
 	function()
