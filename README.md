@@ -1,6 +1,6 @@
 # `~/.`
 
-![neovim in alacritty](https://github.com/user-attachments/assets/c5c07298-7ac3-4542-bb93-ed92b8702f08)
+![neovim in ghostty](https://github.com/user-attachments/assets/45b30c6b-69be-4fa9-ad60-68fafc828c0a)
 
 ### Main Tools
 
