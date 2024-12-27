@@ -1,6 +1,43 @@
 local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 local utils = require("telescope.utils")
+local action_state = require("telescope.actions.state")
+
+local dir_path = function(path)
+	-- Match the path up to the last slash or backslash and return it
+	local dir = path:match("(.*/)") or path:match("(.*\\)")
+	return dir or "" -- Return an empty string if no directory is found
+end
+
+local open_or_cp = function(_, map)
+	-- Open file in file manager
+	map({ "i", "n" }, "<C-CR>", function()
+		local file_path = vim.fn.getcwd() .. "/" .. action_state.get_selected_entry()[1]
+		vim.cmd([[!open ]] .. file_path)
+	end)
+
+	-- Open directory of file in file manager
+	map({ "i", "n" }, "<C-o>", function()
+		local file_path = vim.fn.getcwd() .. "/" .. action_state.get_selected_entry()[1]
+		vim.cmd([[!open ]] .. dir_path(file_path))
+	end)
+
+	-- Copy relative file path to os clipboard
+	map("n", "yy", function()
+		local rel_path = action_state.get_selected_entry()[1]
+		vim.fn.setreg("+", rel_path)
+	end)
+
+	-- Copy absolute file path to os clipboard
+	map("n", "YY", function()
+		local file_path = vim.fn.getcwd() .. "/" .. action_state.get_selected_entry()[1]
+		vim.fn.setreg("+", file_path)
+	end)
+
+	-- needs to return true if you want to map default_mappings and
+	-- false if not
+	return true
+end
 
 telescope.setup({
 	defaults = {
@@ -15,6 +52,11 @@ telescope.setup({
 		},
 		winblend = 8,
 		dynamic_preview_title = true,
+	},
+	pickers = {
+		find_files = {
+			attach_mappings = open_or_cp,
+		},
 	},
 })
 
