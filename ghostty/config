@@ -1,0 +1,20 @@
+auto-update = off
+theme = catppuccin-mocha
+background = 16161C
+foreground = cdd6f4
+
+font-size = 15
+
+window-padding-x = 12
+window-step-resize = true
+macos-titlebar-style = tabs
+custom-shader = tft.glsl
+custom-shader = blooms.glsl
+
+macos-icon = custom-style
+macos-icon-ghost-color = f18f01
+macos-icon-screen-color = e0b0ff
+
+shell-integration-features = no-cursor
+cursor-style = block
+macos-option-as-alt = right
