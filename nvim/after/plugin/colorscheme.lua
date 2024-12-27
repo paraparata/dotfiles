@@ -1,132 +1,3 @@
--- require("kanagawa").setup({
--- 	compile = true, -- enable compiling the colorscheme
--- 	undercurl = false, -- enable undercurls
--- 	commentStyle = { italic = true },
--- 	functionStyle = {},
--- 	keywordStyle = { italic = false },
--- 	statementStyle = { bold = true },
--- 	typeStyle = {},
--- 	transparent = false, -- do not set background color
--- 	dimInactive = false, -- dim inactive window `:h hl-NormalNC`
--- 	terminalColors = true, -- define vim.g.terminal_color_{0,17}
--- 	theme = "wave",
--- 	colors = {
--- 		-- https://github.com/rebelot/kanagawa.nvim/blob/master/lua/kanagawa/themes.lua
--- 		theme = {
--- 			wave = {
--- 				ui = {
--- 					bg_gutter = "#16161C",
--- 					bg_dim = "#0A0C10",
--- 					bg = "#16161C",
--- 				},
--- 			},
--- 		},
--- 	},
--- })
-
--- require("catppuccin").setup({
--- 	flavour = "mocha", -- latte, frappe, macchiato, mocha
--- 	transparent_background = false, -- disables setting the background color.
--- 	show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
--- 	term_colors = true, -- sets terminal colors (e.g. `g:terminal_color_0`)
--- 	dim_inactive = {
--- 		enabled = false, -- dims the background color of inactive window
--- 	},
--- 	no_italic = false, -- Force no italic
--- 	no_bold = false, -- Force no bold
--- 	no_underline = false, -- Force no underline
--- 	styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
--- 		comments = { "italic" }, -- Change the style of comments
--- 		conditionals = {},
--- 		loops = {},
--- 		functions = {},
--- 		keywords = {},
--- 		strings = {},
--- 		variables = {},
--- 		numbers = {},
--- 		booleans = {},
--- 		properties = {},
--- 		types = {},
--- 		operators = {},
--- 		-- miscs = {}, -- Uncomment to turn off hard-coded styles
--- 	},
--- 	color_overrides = {
--- 		all = {
--- 			-- surface0 = "#3e4451",
--- 			-- surface1 = "#545862",
--- 			-- surface2 = "#565c64",
--- 			-- text = "#abb2bf",
--- 			-- rosewater = "#b6bdca",
--- 			-- lavender = "#c8ccd4",
--- 			-- red = "#e06c75",
--- 			-- peach = "#d19a66",
--- 			-- yellow = "#e5c07b",
--- 			-- green = "#98c379",
--- 			-- teal = "#56b6c2",
--- 			-- blue = "#61afef",
--- 			-- mauve = "#c678dd",
--- 			-- flamingo = "#be5046",
--- 			--
--- 			-- -- now patching extra palettes
--- 			-- maroon = "#e06c75",
--- 			-- sky = "#d19a66",
--- 			--
--- 			-- -- extra colors not decided what to do
--- 			-- pink = "#F5C2E7",
--- 			-- sapphire = "#74C7EC",
--- 			--
--- 			-- subtext1 = "#BAC2DE",
--- 			-- subtext0 = "#A6ADC8",
--- 			-- overlay2 = "#9399B2",
--- 			-- overlay1 = "#7F849C",
--- 			-- overlay0 = "#6C7086",
--- 			--
--- 			base = "#16161C",
--- 			mantle = "#16161C",
--- 			crust = "#16161C",
--- 			-- 		rosewater = "#efc9c2",
--- 			-- 		flamingo = "#ebb2b2",
--- 			-- 		pink = "#f2a7de",
--- 			-- 		mauve = "#b889f4",
--- 			-- 		red = "#ea7183",
--- 			-- 		maroon = "#ea838c",
--- 			-- 		peach = "#f39967",
--- 			-- 		yellow = "#eaca89",
--- 			-- 		green = "#96d382",
--- 			-- 		teal = "#78cec1",
--- 			-- 		sky = "#91d7e3",
--- 			-- 		sapphire = "#68bae0",
--- 			-- 		blue = "#739df2",
--- 			-- 		lavender = "#a0a8f6",
--- 			-- 		text = "#b5c1f1",
--- 			-- 		subtext1 = "#a6b0d8",
--- 			-- 		subtext0 = "#959ec2",
--- 			-- 		overlay2 = "#848cad",
--- 			-- 		overlay1 = "#717997",
--- 			-- 		overlay0 = "#63677f",
--- 			-- 		surface2 = "#505469",
--- 			-- 		surface1 = "#3e4255",
--- 			-- 		surface0 = "#2c2f40",
--- 		},
--- 	},
--- 	custom_highlights = function(c)
--- 		return {
--- 			["@tag.attribute.tsx"] = { fg = c.mauve },
--- 			["@tag.tsx"] = { fg = c.red, bold = true },
--- 			["@type.tsx"] = { fg = c.text },
--- 			["@comment"] = { fg = c.surface1, style = { "italic" } },
--- 			TelescopeBorder = { fg = c.surface1 },
--- 		}
--- 	end,
--- 	integrations = {
--- 		cmp = true,
--- 		gitsigns = true,
--- 		nvimtree = true,
--- 		treesitter = true,
--- 		telescope = true,
--- 	},
--- })
-
 require("tokyonight").setup({
 	-- your configuration comes here
 	-- or leave it empty to use the default settings
@@ -167,12 +38,15 @@ require("tokyonight").setup({
 	---@param colors ColorScheme
 	on_highlights = function(h, c)
 		-- TreesitterContext
-		h.TreesitterContext= {
-			bg = "#000000",
+		h.TreesitterContext = {
+			bg = "#16161C",
 		}
-		h.TreesitterContextLineNumber= {
-			fg = "#787c99",
-			bg = "#000000",
+		h.TreesitterContextSeparator = {
+			fg = c.fg_gutter,
+		}
+		h.TreesitterContextLineNumber = {
+			fg = c.fg_gutter,
+			bg = "#16161C",
 		}
 
 		h.SpellBad = { sp = c.error, undercurl = false } -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
