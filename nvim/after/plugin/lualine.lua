@@ -136,32 +136,27 @@ ins_left({
 ins_left({
 	function()
 		local parent_folder = vim.fn.substitute(vim.fn.getcwd(), "^.*/", "", "")
-		return parent_folder
+		return parent_folder .. "@"
 	end,
 	padding = { left = 1, right = 0 },
 	cond = hide_in_width,
 })
 
--- ins_left({
--- 	"filename",
--- 	symbols = { modified = "[⊚]", unnamed = "[Scratch]", new = "[⚹]" },
--- 	padding = { left = 0, right = 0 },
--- 	cond = hide_in_width,
--- })
+ins_left({
+	"filename",
+	symbols = { modified = "[⊚]", unnamed = "[Scratch]", new = "[⚹]" },
+	padding = { left = 0, right = 0 },
+	cond = function()
+		return #vim.fn.tabpagebuflist() == 1 and hide_in_width()
+	end,
+})
 
 ins_left({
 	function()
 		return "on"
 	end,
-	padding = { left = 1, right = 1 },
+	padding = { left = 1, right = 0 },
 	cond = check_git_workspace,
-})
---
-ins_left({
-	function()
-		return check_wip() and "WIP" or ""
-	end,
-	color = { fg = colors.bg, bg = colors.orange, gui = "bold" },
 })
 
 ins_left({
@@ -216,22 +211,28 @@ ins_right({
 	"o:encoding", -- option component same as &encoding in viml
 	fmt = string.upper, -- I'm not sure why it's upper case either ;)
 	cond = hide_in_width or buffer_not_empty,
-	padding = { left = 1, right = 0 },
+	padding = { left = 1, right = 1 },
 })
 
 ins_right({
 	"filetype",
 	fmt = string.lower,
 	icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-	padding = { left = 1, right = 0 },
+	padding = { left = 0, right = 1 },
 	cond = buffer_not_empty,
 })
 
 ins_right({
 	function()
-		return check_wip() and "🚧" or "🌼"
+		return check_wip() and "WIP" or "🌼"
 	end,
-	padding = { left = 1, right = 0 },
+	color = function()
+		if not check_wip() then
+			return nil
+		end
+		return { fg = colors.bg, bg = colors.orange, gui = "bold" }
+	end,
+	padding = { left = 1, right = 1 },
 })
 
 lualine.setup(config)

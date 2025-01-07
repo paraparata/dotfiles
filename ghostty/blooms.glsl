@@ -29,7 +29,8 @@ const vec3[24] samples = {
   };
 
 float lum(vec4 c) {
-  return 0.199 * c.r + 0.287 * c.g + 0.014 * c.b;
+  // return 0.159 * c.r + 0.287 * c.g + 0.054 * c.b;
+  return 0.299 * c.r + 0.487 * c.g + 0.054 * c.b;
   // return 0.299 * c.r + 0.587 * c.g + 0.114 * c.b;
 }
 

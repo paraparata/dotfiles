@@ -15,6 +15,8 @@ macos-icon = custom-style
 macos-icon-ghost-color = f18f01
 macos-icon-screen-color = e0b0ff
 
+shell-integration = zsh
 shell-integration-features = no-cursor
 cursor-style = block
 macos-option-as-alt = right
+mouse-hide-while-typing = true

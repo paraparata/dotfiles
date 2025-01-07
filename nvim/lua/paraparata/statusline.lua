@@ -17,7 +17,10 @@ function M.eval()
 	local path = isScratch(file_path) and "🌼" .. parent_folder or file_path
 	local isModified = isScratch(file_path) and "" or modified
 
-	return "%=" .. path .. " " .. isModified .. "%="
+	if #vim.fn.tabpagebuflist() > 1 then
+		return "%=" .. path .. " " .. isModified .. "%="
+	end
+	return ""
 end
 
 return M
