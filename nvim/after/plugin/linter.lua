@@ -19,8 +19,22 @@ end
 
 require("lint").linters_by_ft = langLint
 
+local js_filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" }
+
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-	callback = function()
-		require("lint").try_lint()
+	callback = function(args)
+		local filetype = vim.api.nvim_get_option_value("filetype", { buf = args.buf })
+
+		if vim.tbl_contains(js_filetypes, filetype) then
+			if
+				require("lspconfig.util").root_pattern(".eslintrc.json", "eslint.config.js", "eslint.config.mjs")(
+					args.buf
+				)
+			then
+				require("lint").try_lint()
+			end
+		else
+			require("lint").try_lint()
+		end
 	end,
 })
