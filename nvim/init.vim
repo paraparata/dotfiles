@@ -67,6 +67,8 @@ Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 
 Plug 'nvim-tree/nvim-tree.lua'
 
+Plug 'dhruvasagar/vim-table-mode'
+
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
