@@ -21,7 +21,7 @@
                 ],
                 "to_if_alone": [
                   {
-                    "hold_down_milliseconds": 200,
+                    "hold_down_milliseconds": 1000,
                     "key_code": "caps_lock"
                   }
                 ],
