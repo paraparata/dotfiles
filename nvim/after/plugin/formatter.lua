@@ -69,7 +69,7 @@ local formatterConfig = {
 		-- Swiftlint
 		function()
 			return {
-				exe = "swift-format",
+				exe = "swift format",
 				args = { vim.api.nvim_buf_get_name(0) },
 				stdin = true,
 			}

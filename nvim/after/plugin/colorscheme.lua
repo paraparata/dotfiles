@@ -49,6 +49,7 @@ require("tokyonight").setup({
 			bg = "#16161C",
 		}
 
+		-- h.Cursor = { bg = c.orange }
 		h.SpellBad = { sp = c.error, undercurl = false } -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
 		h.SpellCap = { sp = c.warning, undercurl = false } -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
 		h.SpellLocal = { sp = c.info, undercurl = false } -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.

@@ -69,6 +69,8 @@ Plug 'nvim-tree/nvim-tree.lua'
 
 Plug 'dhruvasagar/vim-table-mode'
 
+" Plug 'sphamba/smear-cursor.nvim'
+
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()

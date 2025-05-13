@@ -1,4 +1,5 @@
 local lsp = require("lsp-zero")
+local util = require("lspconfig.util")
 
 lsp.preset("recommended")
 
@@ -164,6 +165,14 @@ require("lspconfig").clangd.setup({
 		"configure.ac",
 		".git"
 	),
+})
+
+require("lspconfig").astro.setup({})
+
+require("lspconfig").tailwindcss.setup({})
+
+require("lspconfig").sourcekit.setup({
+	filetypes = { "swift", "objc", "objcpp" },
 })
 
 -- Zig config

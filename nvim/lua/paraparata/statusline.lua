@@ -14,13 +14,13 @@ function M.eval()
 	local parent_folder = vim.fn.substitute(vim.fn.getcwd(), "^.*/", "", "")
 	local file_path = vim.api.nvim_eval_statusline("%f", {}).str
 	local modified = vim.api.nvim_eval_statusline("%M", {}).str == "+" and "⊚" or ""
-	local path = isScratch(file_path) and "🌼" .. parent_folder or file_path
+	local path = isScratch(file_path) and "[" .. parent_folder .. "]" or file_path
 	local isModified = isScratch(file_path) and "" or modified
 
-	if #vim.fn.tabpagebuflist() > 1 then
-		return "%=" .. path .. " " .. isModified .. "%="
-	end
-	return ""
+	-- if #vim.fn.tabpagebuflist() > 1 then
+	return "%=" .. path .. " " .. isModified .. "%="
+	-- end
+	-- return ""
 end
 
 return M
