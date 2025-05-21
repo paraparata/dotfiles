@@ -82,6 +82,7 @@ require("tokyonight").setup({
 		-- h.TabLine = { fg = c.comment, bg = "#000000" }
 		h.TabLineSel = { fg = c.purple }
 		-- h.TabLineFill = { bg = "#000000" }
+		h.NormalFloat = { bg = c.bg_dark }
 	end,
 })
 
