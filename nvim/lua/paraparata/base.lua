@@ -58,3 +58,5 @@ vim.opt.clipboard:append({ "unnamedplus" })
 
 vim.opt.spelllang = "en_us"
 vim.opt.spell = true
+
+vim.o.winborder = "single"

@@ -1,3 +1,4 @@
+local Util = require("tokyonight.util")
 require("tokyonight").setup({
 	-- your configuration comes here
 	-- or leave it empty to use the default settings
@@ -30,6 +31,7 @@ require("tokyonight").setup({
 		colors.bg = "#16161C"
 		colors.bg_dark = "#16161C"
 		colors.red = "#de5971"
+		colors.border_highlight = "#5A607F"
 	end,
 
 	--- You can override specific highlights to use other groups or a hex color
@@ -74,15 +76,20 @@ require("tokyonight").setup({
 			bg = c.purple,
 		}
 		-- Telescope
-		h.TelescopeBorder = {
-			fg = "#5A607F",
-		}
+		-- h.TelescopeBorder = {
+		-- 	fg = "#5A607F",
+		-- }
 
 		-- Window
 		-- h.TabLine = { fg = c.comment, bg = "#000000" }
 		h.TabLineSel = { fg = c.purple }
 		-- h.TabLineFill = { bg = "#000000" }
 		h.NormalFloat = { bg = c.bg_dark }
+
+		h.LspSignWarn = { bg = Util.darken(c.yellow, 0.1), fg = c.yellow }
+		h.LspSignError = { bg = Util.darken(c.red, 0.1), fg = c.red }
+		h.LspSignInfo = { bg = Util.darken(c.blue, 0.1), fg = c.blue }
+		h.LspSignHint = { bg = Util.darken("#58B99D", 0.1), fg = "#58B99D" }
 	end,
 })
 

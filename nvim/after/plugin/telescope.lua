@@ -41,6 +41,7 @@ end
 
 telescope.setup({
 	defaults = {
+		border = false,
 		preview = {
 			filesize_limit = 1, -- MB
 		},

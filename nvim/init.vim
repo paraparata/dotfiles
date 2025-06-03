@@ -27,17 +27,11 @@ Plug 'nvim-tree/nvim-web-devicons'
 
 " LSP Support
 Plug 'neovim/nvim-lspconfig'             " Required
-Plug 'williamboman/mason.nvim',          " Optional
-Plug 'williamboman/mason-lspconfig.nvim' " Optional
-Plug 'ziglang/zig.vim'       					 	 " https://github.com/ziglang/zig.vim
 
 " Autocompletion
 Plug 'hrsh7th/nvim-cmp'     " Required
 Plug 'hrsh7th/cmp-nvim-lsp' " Required
 Plug 'L3MON4D3/LuaSnip'     " Required
-
-
-Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v2.x'}
 
 Plug 'tpope/vim-fugitive'
 
