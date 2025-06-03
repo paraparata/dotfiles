@@ -1,5 +1,4 @@
 local lsp = require("lsp-zero")
-local util = require("lspconfig.util")
 
 lsp.preset("recommended")
 
@@ -86,7 +85,7 @@ lsp.on_attach(function(_, bufnr)
 		vim.cmd([[tab split | lua vim.lsp.buf.definition()]])
 	end, opts)
 	vim.keymap.set("n", "K", function()
-		vim.lsp.buf.hover()
+		vim.lsp.buf.hover({ offset_x = 4, offset_y = 4 })
 	end, opts)
 	vim.keymap.set("n", "<leader>vws", function()
 		vim.lsp.buf.workspace_symbol()
